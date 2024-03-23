@@ -7,17 +7,18 @@ use eyre::Result;
 use reqwest::Url;
 use std::time::{SystemTime, UNIX_EPOCH};
 use dotenv::dotenv;
-
+use trade_bot::utils::*;
+use console::style;
 // use subway_rs::{abi, banner, numeric, relayer, telemetry, uniswap, utils};
 
 #[tokio::main]
 async fn main() -> Result<()> {
     dotenv().ok(); 
     // Get the http provider for flashbots use
-    let http_provider = utils::get_http_provider()?;
+    let http_provider = get_http_provider()?;
 
     // Create the websocket clieant
-    let client = utils::create_websocket_client().await?;
+    let client = create_websocket_client().await?;
 
     // Get the latest block
     let last_block = client
@@ -26,6 +27,8 @@ async fn main() -> Result<()> {
         .unwrap()
         .number
         .unwrap();
+    println!("[START] Sandwich bot initializing on block {}", style(last_block).cyan());
 
     Ok(())
+
 }

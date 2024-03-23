@@ -1,14 +1,20 @@
 [package]
-name = "flash-bot-epi-test"
+name = "flast-bot-trade"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-ethers = "2.0.14"
+ethers = { version = "2.0.14", features = [ "abigen", "ws", "rustls" ] }
 eyre = "0.6.12"
 tokio = { version = "1.0.1", features = ["full"] }
 ethers-flashbots = "0.15.0"
 reqwest = { version = "0.12.1", features = ["json", "blocking"] }
 dotenv = "0.15.0"
+console = "0.15.8"
+
+
+[lib]
+name = "trade_bot"
+path = "src/lib.rs"

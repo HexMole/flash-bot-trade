@@ -1,7 +1,7 @@
 //! A module containing common utilities
 
 use std::{str::FromStr, sync::Arc};
-
+use ethers::providers::{Provider, Ws};
 use ethers::{prelude::*, types::transaction::eip2718::TypedTransaction};
 use eyre::Result;
 use rand::Rng;
