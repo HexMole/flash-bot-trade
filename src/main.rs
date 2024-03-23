@@ -12,6 +12,7 @@ use dotenv::dotenv;
 
 #[tokio::main]
 async fn main() -> Result<()> {
+    dotenv().ok(); 
     // Get the http provider for flashbots use
     let http_provider = utils::get_http_provider()?;
 
